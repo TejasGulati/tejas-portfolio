@@ -1,6 +1,5 @@
-// App.jsx - Updated with Simplified Structure
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
@@ -9,26 +8,21 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import './App.css';
 
-const App = () => {
-  const [darkMode, setDarkMode] = useState(() => {
-    const savedMode = localStorage.getItem('darkMode');
-    if (savedMode !== null) return JSON.parse(savedMode);
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
-  
+// ScrollToTop as a function inside App
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem('darkMode', JSON.stringify(darkMode));
-  }, [darkMode]);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pathname]);
 
-  const toggleDarkMode = () => setDarkMode(!darkMode);
+  return null;
+};
 
+const AppContent = ({ darkMode, toggleDarkMode }) => {
   return (
-    <Router>
+    <>
+      <ScrollToTop />
       <div className={`min-h-screen flex flex-col ${darkMode ? 'dark' : ''}`}>
         <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <main className="flex-1">
@@ -42,6 +36,31 @@ const App = () => {
           </Routes>
         </main>
       </div>
+    </>
+  );
+};
+
+const App = () => {
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedMode = localStorage.getItem('darkMode');
+    if (savedMode !== null) return JSON.parse(savedMode);
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('darkMode', JSON.stringify(darkMode));
+  }, [darkMode]);
+
+  const toggleDarkMode = () => setDarkMode(!darkMode);
+
+  return (
+    <Router>
+      <AppContent darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
     </Router>
   );
 };
