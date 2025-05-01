@@ -6,7 +6,7 @@ const Home = () => {
     'Full Stack Developer',
     'Web Developer',
     'DevOps Engineer',
-    'Solutions Architect'
+    'AI Solutions Developer'
   ]);
   const [currentRole, setCurrentRole] = useState('');
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -49,11 +49,11 @@ const Home = () => {
                 TEJAS GULATI
               </span>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#3a4a38] dark:text-[#e9e0ca] leading-tight">
-                Crafting digital <br />
+                Building digital <br />
                 <span className="text-[#bc8c5f] dark:text-[#d4a373] bg-clip-text bg-gradient-to-r from-[#bc8c5f] to-[#a17952] dark:from-[#d4a373] dark:to-[#c99868]">
-                  experiences
+                  solutions
                 </span> that <br />
-                matter.
+                create impact.
               </h1>
             </div>
 
@@ -68,11 +68,11 @@ const Home = () => {
             </div>
 
             <p className="text-lg text-[#3a4a38]/90 dark:text-[#e9e0ca]/90 leading-relaxed max-w-xl">
-              Information Technology professional specializing in creating robust, 
+              Information Technology student at MAIT specializing in creating robust, 
               scalable web applications with expertise in 
               <span className="font-bold text-[#bc8c5f] dark:text-[#d4a373]"> Django</span>, 
               <span className="font-bold text-[#bc8c5f] dark:text-[#d4a373]"> React</span>, and 
-              <span className="font-bold text-[#bc8c5f] dark:text-[#d4a373]"> DevOps</span> methodologies.
+              <span className="font-bold text-[#bc8c5f] dark:text-[#d4a373]"> AI integration</span>.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-6">
@@ -83,7 +83,7 @@ const Home = () => {
                 <Code size={18} /> View Projects
               </a>
               <a 
-                href="/resume.pdf" 
+                href="/Tejas-Resume.pdf" 
                 download
                 className="flex items-center gap-2 bg-[#d4a373] hover:bg-[#c99868] text-[#3a4a38] px-6 py-3 rounded-lg transition-all font-medium shadow-lg hover:shadow-[#d4a373]/30 dark:hover:shadow-[#d4a373]/30"
               >
@@ -96,7 +96,7 @@ const Home = () => {
                 { href: "https://github.com/TejasGulati", icon: <Github size={20} />, label: "GitHub" },
                 { href: "https://linkedin.com/in/tejas-gulati/", icon: <Linkedin size={20} />, label: "LinkedIn" },
                 { href: "mailto:tejasgulati11227@gmail.com", icon: <Mail size={20} />, label: "Email" },
-                { href: "/resume.pdf", icon: <FileText size={20} />, label: "Resume" }
+                { href: "/Tejas-Resume.pdf", icon: <FileText size={20} />, label: "Resume" }
               ].map((item, i) => (
                 <a
                   key={i}
@@ -129,13 +129,13 @@ const Home = () => {
               <div className="space-y-8">
                 <div>
                   <h3 className="text-sm font-bold text-[#e9e0ca] dark:text-[#3a4a38] uppercase mb-6 border-b border-[#bc8c5f]/40 dark:border-[#d4a373]/40 pb-2 tracking-wider">
-                    EXPERIENCE
+                    EXPERTISE
                   </h3>
                   <div className="space-y-5">
                     {[
                       { skill: 'Web Development', level: 90 },
                       { skill: 'DevOps', level: 85 },
-                      { skill: 'UI/UX Design', level: 75 }
+                      { skill: 'AI Integration', level: 75 }
                     ].map((item, index) => (
                       <div key={index} className="space-y-2">
                         <div className="flex justify-between items-center">
@@ -158,7 +158,7 @@ const Home = () => {
                     TECHNOLOGIES
                   </h3>
                   <div className="flex flex-wrap gap-3">
-                    {['React', 'Django', 'Node.js', 'Docker', 'AWS', 'Git', 'Python', 'JavaScript'].map((tech, i) => (
+                    {['React', 'Django', 'Node.js', 'Docker', 'TensorFlow', 'Git', 'Python', 'JavaScript'].map((tech, i) => (
                       <span 
                         key={i} 
                         className="px-3 py-2 bg-[#e9e0ca]/10 dark:bg-[#3a4a38]/10 border border-[#bc8c5f]/30 dark:border-[#d4a373]/30 text-[#e9e0ca] dark:text-[#3a4a38] rounded-lg text-sm font-medium hover:bg-[#bc8c5f]/20 dark:hover:bg-[#d4a373]/20 transition-all"
