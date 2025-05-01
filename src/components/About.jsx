@@ -5,126 +5,171 @@ const About = () => {
     {
       category: 'Languages',
       items: ['Python', 'JavaScript', 'SQL'],
-      icon: <Code className="text-primary w-6 h-6" />
+      icon: <Code className="text-[#d4a373] dark:text-[#bc8c5f]" size={20} />
     },
     {
       category: 'Frameworks',
       items: ['Django', 'Django REST', 'React', 'Celery', 'Redis'],
-      icon: <Server className="text-primary w-6 h-6" />
+      icon: <Server className="text-[#d4a373] dark:text-[#bc8c5f]" size={20} />
     },
     {
       category: 'Databases',
       items: ['MySQL', 'PostgreSQL'],
-      icon: <Database className="text-primary w-6 h-6" />
+      icon: <Database className="text-[#d4a373] dark:text-[#bc8c5f]" size={20} />
     },
     {
       category: 'AI/ML',
       items: ['TensorFlow', 'Scikit-Learn', 'Data Preprocessing'],
-      icon: <Bot className="text-primary w-6 h-6" />
+      icon: <Bot className="text-[#d4a373] dark:text-[#bc8c5f]" size={20} />
     },
     {
       category: 'Tools',
       items: ['Docker', 'Git', 'GitHub Actions', 'Postman'],
-      icon: <Cpu className="text-primary w-6 h-6" />
+      icon: <Cpu className="text-[#d4a373] dark:text-[#bc8c5f]" size={20} />
     },
     {
       category: 'Version Control',
       items: ['Git', 'GitHub'],
-      icon: <GitBranch className="text-primary w-6 h-6" />
+      icon: <GitBranch className="text-[#d4a373] dark:text-[#bc8c5f]" size={20} />
     }
   ];
 
   return (
-    <section id="about" className="py-20 bg-gray-50 dark:bg-gray-900">
-      <div className="container mx-auto px-4">
+    <section id="about" className="py-24 bg-gradient-to-b from-[#3a4a38]/90 to-[#3a4a38] dark:from-[#e9e0ca]/90 dark:to-[#e9e0ca]">
+      <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-gradient bg-gradient-to-r from-blue-500 to-purple-600 inline-block text-transparent bg-clip-text">
-            About Me
+          <span className="inline-block px-4 py-2 bg-[#e9e0ca]/10 dark:bg-[#3a4a38]/10 rounded-full text-sm font-semibold tracking-widest text-[#e9e0ca] dark:text-[#3a4a38] uppercase mb-4">
+            ABOUT ME
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#e9e0ca] dark:text-[#3a4a38] mb-6">
+            Who <span className="text-[#d4a373] dark:text-[#bc8c5f]">I Am</span>
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg text-[#e9e0ca]/90 dark:text-[#3a4a38]/90 max-w-3xl mx-auto">
             I'm an Information Technology student passionate about web development, especially in building scalable and impactful digital products.
           </p>
         </div>
 
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
-          {/* Education */}
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md transition hover:-translate-y-1 hover:shadow-lg">
-            <h3 className="text-2xl font-bold mb-4 text-gradient">Education</h3>
-            <div>
-              <h4 className="text-xl font-semibold">B.Tech in Information Technology</h4>
-              <p className="text-gray-600 dark:text-gray-300">Maharaja Agrasen Institute Of Technology</p>
-              <p className="text-gray-500 dark:text-gray-400">Nov 2022 – Aug 2026</p>
-              <p className="mt-2 text-gray-700 dark:text-gray-300"><span className="font-medium">CGPA:</span> 9.195/10</p>
-            </div>
-            <div className="mt-4">
-              <h5 className="font-semibold mb-2">Relevant Coursework:</h5>
-              <ul className="grid grid-cols-2 gap-2 text-gray-600 dark:text-gray-300 text-sm">
-                <li>Data Structures</li>
-                <li>Algorithms</li>
-                <li>Web Development</li>
-                <li>Machine Learning</li>
-                <li>Cloud Computing</li>
-                <li>Full Stack Development</li>
-              </ul>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
+          {/* Education Card */}
+          <div className="relative">
+            <div className="absolute -inset-4 bg-gradient-to-br from-[#d4a373]/20 to-[#e9e0ca]/20 dark:from-[#bc8c5f]/20 dark:to-[#3a4a38]/20 rounded-2xl blur-3xl opacity-80"></div>
+            <div className="relative p-8 bg-[#3a4a38]/80 dark:bg-[#e9e0ca]/80 rounded-2xl shadow-xl border border-[#d4a373]/20 dark:border-[#bc8c5f]/20 h-full flex flex-col">
+              <div className="mb-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-2xl font-bold text-[#e9e0ca] dark:text-[#3a4a38]">Education</h3>
+                  <div className="p-3 bg-[#d4a373]/20 dark:bg-[#bc8c5f]/20 rounded-full">
+                    <Code className="text-[#d4a373] dark:text-[#bc8c5f]" size={20} />
+                  </div>
+                </div>
+                <h4 className="text-xl font-semibold text-[#e9e0ca] dark:text-[#3a4a38]">B.Tech in Information Technology</h4>
+                <p className="text-[#e9e0ca]/90 dark:text-[#3a4a38]/90">Maharaja Agrasen Institute Of Technology</p>
+                <p className="text-[#e9e0ca]/70 dark:text-[#3a4a38]/70">Nov 2022 – Aug 2026</p>
+                <p className="mt-2 text-[#e9e0ca] dark:text-[#3a4a38]"><span className="font-medium">CGPA:</span> 9.195/10</p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold mb-3 text-[#d4a373] dark:text-[#bc8c5f]">Relevant Coursework:</h4>
+                <ul className="space-y-2">
+                  {['Data Structures', 'Algorithms', 'Web Development', 'Machine Learning', 'Cloud Computing', 'Full Stack Development'].map((course, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="text-[#d4a373] dark:text-[#bc8c5f] mr-2">•</span>
+                      <span className="text-[#e9e0ca]/90 dark:text-[#3a4a38]/90">{course}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
-          {/* Personal Info */}
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md transition hover:-translate-y-1 hover:shadow-lg">
-            <h3 className="text-2xl font-bold mb-4 text-gradient">Personal Info</h3>
-            <ul className="space-y-3 text-gray-700 dark:text-gray-300 text-sm">
-              <li><span className="font-medium">Name:</span> Tejas Gulati</li>
-              <li><span className="font-medium">Location:</span> Delhi, India</li>
-              <li>
-                <span className="font-medium">Email:</span>{' '}
-                <a href="mailto:tejasgulati11227@gmail.com" className="text-primary hover:underline">
-                  tejasgulati11227@gmail.com
-                </a>
-              </li>
-              <li>
-                <span className="font-medium">LinkedIn:</span>{' '}
-                <a href="https://linkedin.com/in/tejas-gulati/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                  linkedin.com/in/tejas-gulati/
-                </a>
-              </li>
-              <li>
-                <span className="font-medium">GitHub:</span>{' '}
-                <a href="https://github.com/TejasGulati" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                  github.com/TejasGulati
-                </a>
-              </li>
-            </ul>
+          {/* Personal Info Card */}
+          <div className="relative">
+            <div className="absolute -inset-4 bg-gradient-to-br from-[#d4a373]/20 to-[#e9e0ca]/20 dark:from-[#bc8c5f]/20 dark:to-[#3a4a38]/20 rounded-2xl blur-3xl opacity-80"></div>
+            <div className="relative p-8 bg-[#3a4a38]/80 dark:bg-[#e9e0ca]/80 rounded-2xl shadow-xl border border-[#d4a373]/20 dark:border-[#bc8c5f]/20 h-full flex flex-col">
+              <div className="mb-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-2xl font-bold text-[#e9e0ca] dark:text-[#3a4a38]">Personal Info</h3>
+                  <div className="p-3 bg-[#d4a373]/20 dark:bg-[#bc8c5f]/20 rounded-full">
+                    <Code className="text-[#d4a373] dark:text-[#bc8c5f]" size={20} />
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <span className="text-[#d4a373] dark:text-[#bc8c5f] mr-2">•</span>
+                  <div>
+                    <span className="font-medium text-[#e9e0ca] dark:text-[#3a4a38]">Name:</span>
+                    <span className="ml-2 text-[#e9e0ca]/90 dark:text-[#3a4a38]/90">Tejas Gulati</span>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-[#d4a373] dark:text-[#bc8c5f] mr-2">•</span>
+                  <div>
+                    <span className="font-medium text-[#e9e0ca] dark:text-[#3a4a38]">Location:</span>
+                    <span className="ml-2 text-[#e9e0ca]/90 dark:text-[#3a4a38]/90">Delhi, India</span>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-[#d4a373] dark:text-[#bc8c5f] mr-2">•</span>
+                  <div>
+                    <span className="font-medium text-[#e9e0ca] dark:text-[#3a4a38]">Email:</span>
+                    <a href="mailto:tejasgulati11227@gmail.com" className="ml-2 text-[#d4a373] dark:text-[#bc8c5f] hover:underline">
+                      tejasgulati11227@gmail.com
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-[#d4a373] dark:text-[#bc8c5f] mr-2">•</span>
+                  <div>
+                    <span className="font-medium text-[#e9e0ca] dark:text-[#3a4a38]">LinkedIn:</span>
+                    <a href="https://linkedin.com/in/tejas-gulati/" target="_blank" rel="noopener noreferrer" className="ml-2 text-[#d4a373] dark:text-[#bc8c5f] hover:underline">
+                      linkedin.com/in/tejas-gulati/
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-[#d4a373] dark:text-[#bc8c5f] mr-2">•</span>
+                  <div>
+                    <span className="font-medium text-[#e9e0ca] dark:text-[#3a4a38]">GitHub:</span>
+                    <a href="https://github.com/TejasGulati" target="_blank" rel="noopener noreferrer" className="ml-2 text-[#d4a373] dark:text-[#bc8c5f] hover:underline">
+                      github.com/TejasGulati
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
-        {/* Skills */}
-        <h3 className="text-3xl font-bold text-center mb-10 text-gradient bg-gradient-to-r from-blue-500 to-purple-600 inline-block text-transparent bg-clip-text">
-          Skills & Expertise
-        </h3>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skills.map((skill, idx) => (
-            <div
-              key={idx}
-              className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md transition hover:-translate-y-1 hover:shadow-lg"
-            >
-              <div className="flex items-center mb-4">
-                {skill.icon}
-                <h4 className="text-xl font-semibold ml-2 text-gray-800 dark:text-white">{skill.category}</h4>
+        
+        <div className="mt-16">
+          <h3 className="text-3xl font-bold text-center mb-12 text-[#e9e0ca] dark:text-[#3a4a38]">
+            Technical <span className="text-[#d4a373] dark:text-[#bc8c5f]">Skills</span>
+          </h3>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {skills.map((skill, idx) => (
+              <div key={idx} className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-br from-[#d4a373]/20 to-[#e9e0ca]/20 dark:from-[#bc8c5f]/20 dark:to-[#3a4a38]/20 rounded-2xl blur-3xl opacity-80"></div>
+                <div className="relative p-8 bg-[#3a4a38]/80 dark:bg-[#e9e0ca]/80 rounded-2xl shadow-xl border border-[#d4a373]/20 dark:border-[#bc8c5f]/20 h-full flex flex-col">
+                  <div className="flex items-center justify-between mb-4">
+                    <h4 className="text-lg font-bold text-[#e9e0ca] dark:text-[#3a4a38]">{skill.category}</h4>
+                    <div className="p-3 bg-[#d4a373]/20 dark:bg-[#bc8c5f]/20 rounded-full">
+                      {skill.icon}
+                    </div>
+                  </div>
+                  
+                  <ul className="space-y-2">
+                    {skill.items.map((item, i) => (
+                      <li key={i} className="flex items-start">
+                        <span className="text-[#d4a373] dark:text-[#bc8c5f] mr-2">•</span>
+                        <span className="text-[#e9e0ca]/90 dark:text-[#3a4a38]/90">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <div className="flex flex-wrap gap-2">
-                {skill.items.map((item, subIdx) => (
-                  <span
-                    key={subIdx}
-                    className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 text-sm px-2 py-1 rounded-full"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

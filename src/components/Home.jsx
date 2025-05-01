@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, FileText, Code, Download } from 'lucide-react';
+import { Github, Linkedin, Mail, FileText, Code, Download, ArrowRight } from 'lucide-react';
 
 const Home = () => {
   const [roles] = useState([
     'Full Stack Developer',
     'Web Developer',
-    'DevOps Enthusiast',
-    'Problem Solver'
+    'DevOps Engineer',
+    'Solutions Architect'
   ]);
   const [currentRole, setCurrentRole] = useState('');
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [typingSpeed, setTypingSpeed] = useState(100);
+  const [typingSpeed, setTypingSpeed] = useState(80);
 
   useEffect(() => {
     const typeWriter = () => {
@@ -24,11 +24,10 @@ const Home = () => {
           : currentText.substring(0, prev.length + 1)
       );
 
-      setTypingSpeed(isDeleting ? 50 : 100);
+      setTypingSpeed(isDeleting ? 40 : 80);
 
       if (!isDeleting && currentRole === currentText) {
-        // Delay before starting to delete
-        setTimeout(() => setIsDeleting(true), 1500);
+        setTimeout(() => setIsDeleting(true), 2000);
       } else if (isDeleting && currentRole === '') {
         setIsDeleting(false);
         setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
@@ -40,64 +39,71 @@ const Home = () => {
   }, [currentRole, currentRoleIndex, isDeleting, roles, typingSpeed]);
 
   return (
-    <section className="min-h-screen flex items-center pt-24 pb-12 bg-white dark:bg-gray-900">
+    <section className="min-h-screen bg-gradient-to-b from-[#e9e0ca] to-[#e9e0ca]/90 dark:from-[#3a4a38] dark:to-[#3a4a38]/90 pt-24 pb-16">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-          {/* Text Content */}
-          <div className="md:w-1/2 text-center md:text-left">
-            <div className="inline-block px-4 py-1 mb-4 bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium rounded-full">
-              Hello, I'm
-            </div>
-
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-white">
-              <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-                Tejas Gulati
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left Content */}
+          <div className="space-y-10">
+            <div>
+              <span className="inline-block px-4 py-2 bg-[#3a4a38]/10 dark:bg-[#e9e0ca]/10 rounded-full text-sm font-semibold tracking-widest text-[#3a4a38] dark:text-[#e9e0ca] uppercase mb-4">
+                TEJAS GULATI
               </span>
-            </h1>
-
-            <div className="h-12 mb-6">
-              <h2 className="text-2xl md:text-3xl font-semibold flex items-center justify-center md:justify-start bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-                {currentRole}
-                <span className="ml-1 animate-pulse">|</span>
-              </h2>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#3a4a38] dark:text-[#e9e0ca] leading-tight">
+                Crafting digital <br />
+                <span className="text-[#bc8c5f] dark:text-[#d4a373] bg-clip-text bg-gradient-to-r from-[#bc8c5f] to-[#a17952] dark:from-[#d4a373] dark:to-[#c99868]">
+                  experiences
+                </span> that <br />
+                matter.
+              </h1>
             </div>
 
-            <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-xl mx-auto md:mx-0 leading-relaxed">
-              Information Technology student and aspiring Full Stack Web Developer with experience in{' '}
-              <span className="font-semibold text-blue-600 dark:text-blue-400">Django</span>,{' '}
-              <span className="font-semibold text-blue-600 dark:text-blue-400">React</span>, and{' '}
-              <span className="font-semibold text-blue-600 dark:text-blue-400">DevOps</span>. Passionate about creating efficient and impactful solutions.
+            <div className="h-14">
+              <div className="flex items-center text-2xl font-medium text-[#3a4a38] dark:text-[#e9e0ca]">
+                <span className="mr-2">I'm a</span>
+                <span className="text-[#bc8c5f] dark:text-[#d4a373] font-bold">
+                  {currentRole}
+                  <span className="inline-block w-1 h-8 ml-1 bg-[#bc8c5f] dark:bg-[#d4a373] animate-pulse rounded-full"></span>
+                </span>
+              </div>
+            </div>
+
+            <p className="text-lg text-[#3a4a38]/90 dark:text-[#e9e0ca]/90 leading-relaxed max-w-xl">
+              Information Technology professional specializing in creating robust, 
+              scalable web applications with expertise in 
+              <span className="font-bold text-[#bc8c5f] dark:text-[#d4a373]"> Django</span>, 
+              <span className="font-bold text-[#bc8c5f] dark:text-[#d4a373]"> React</span>, and 
+              <span className="font-bold text-[#bc8c5f] dark:text-[#d4a373]"> DevOps</span> methodologies.
             </p>
 
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start mb-8">
-              <a href="/contact" className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">
+            <div className="flex flex-wrap gap-4 pt-6">
+              <a href="/contact" className="flex items-center gap-2 bg-[#bc8c5f] hover:bg-[#a17952] text-[#e9e0ca] px-6 py-3 rounded-lg transition-all font-medium shadow-lg hover:shadow-[#bc8c5f]/30 dark:hover:shadow-[#d4a373]/30">
                 <Mail size={18} /> Contact Me
               </a>
-              <a href="/projects" className="flex items-center gap-2 border border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 px-5 py-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900 transition">
+              <a href="/projects" className="flex items-center gap-2 bg-[#3a4a38] hover:bg-[#2a382a] text-[#e9e0ca] px-6 py-3 rounded-lg transition-all font-medium shadow-lg hover:shadow-[#3a4a38]/30 dark:hover:shadow-[#3a4a38]/30">
                 <Code size={18} /> View Projects
               </a>
               <a 
                 href="/resume.pdf" 
                 download
-                className="flex items-center gap-2 bg-purple-600 text-white px-5 py-2 rounded-lg hover:bg-purple-700 transition"
+                className="flex items-center gap-2 bg-[#d4a373] hover:bg-[#c99868] text-[#3a4a38] px-6 py-3 rounded-lg transition-all font-medium shadow-lg hover:shadow-[#d4a373]/30 dark:hover:shadow-[#d4a373]/30"
               >
                 <Download size={18} /> Resume
               </a>
             </div>
 
-            <div className="flex space-x-4 justify-center md:justify-start">
+            <div className="flex space-x-5 pt-8">
               {[
-                { href: "https://github.com/TejasGulati", icon: <Github size={22} />, label: "GitHub" },
-                { href: "https://linkedin.com/in/tejas-gulati/", icon: <Linkedin size={22} />, label: "LinkedIn" },
-                { href: "mailto:tejasgulati11227@gmail.com", icon: <Mail size={22} />, label: "Email" },
-                { href: "/resume.pdf", icon: <FileText size={22} />, label: "Resume" }
+                { href: "https://github.com/TejasGulati", icon: <Github size={20} />, label: "GitHub" },
+                { href: "https://linkedin.com/in/tejas-gulati/", icon: <Linkedin size={20} />, label: "LinkedIn" },
+                { href: "mailto:tejasgulati11227@gmail.com", icon: <Mail size={20} />, label: "Email" },
+                { href: "/resume.pdf", icon: <FileText size={20} />, label: "Resume" }
               ].map((item, i) => (
                 <a
                   key={i}
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-white dark:bg-gray-800 rounded-full text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 shadow-sm hover:shadow-md transition-all"
+                  className="p-3 bg-[#3a4a38]/10 dark:bg-[#e9e0ca]/10 text-[#3a4a38] dark:text-[#e9e0ca] rounded-full hover:bg-[#bc8c5f] dark:hover:bg-[#d4a373] transition-all shadow-sm hover:shadow-md"
                   aria-label={item.label}
                 >
                   {item.icon}
@@ -106,16 +112,70 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Profile Image */}
-          <div className="md:w-1/2 flex justify-center">
-            <div className="relative w-64 h-64 md:w-80 md:h-80">
-              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-30 blur-xl"></div>
-              <div className="relative w-full h-full rounded-full bg-gradient-to-br from-blue-500 to-purple-600 p-1 shadow-xl">
-                <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-900 p-3 flex items-center justify-center">
-                  <div className="text-8xl md:text-9xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-                    TG
+          {/* Right Content */}
+          <div className="relative hidden lg:block">
+            <div className="absolute -inset-4 bg-gradient-to-br from-[#bc8c5f]/20 to-[#3a4a38]/20 rounded-2xl blur-3xl opacity-80"></div>
+            <div className="relative bg-[#3a4a38] dark:bg-[#e9e0ca] rounded-3xl shadow-2xl p-8 border border-[#bc8c5f]/20 dark:border-[#d4a373]/20">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#bc8c5f] to-[#a17952] dark:from-[#d4a373] dark:to-[#c99868] flex items-center justify-center text-[#e9e0ca] dark:text-[#3a4a38] font-bold text-2xl shadow-md">
+                  TG
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-[#e9e0ca] dark:text-[#3a4a38]">Tejas Gulati</h2>
+                  <p className="text-[#d4a373] dark:text-[#bc8c5f] font-medium">Full Stack Developer</p>
+                </div>
+              </div>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-sm font-bold text-[#e9e0ca] dark:text-[#3a4a38] uppercase mb-6 border-b border-[#bc8c5f]/40 dark:border-[#d4a373]/40 pb-2 tracking-wider">
+                    EXPERIENCE
+                  </h3>
+                  <div className="space-y-5">
+                    {[
+                      { skill: 'Web Development', level: 90 },
+                      { skill: 'DevOps', level: 85 },
+                      { skill: 'UI/UX Design', level: 75 }
+                    ].map((item, index) => (
+                      <div key={index} className="space-y-2">
+                        <div className="flex justify-between items-center">
+                          <span className="font-medium text-[#e9e0ca] dark:text-[#3a4a38]">{item.skill}</span>
+                          <span className="text-xs text-[#e9e0ca]/70 dark:text-[#3a4a38]/70">{item.level}%</span>
+                        </div>
+                        <div className="w-full h-2 bg-[#e9e0ca]/20 dark:bg-[#3a4a38]/20 rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-gradient-to-r from-[#bc8c5f] to-[#a17952] dark:from-[#d4a373] dark:to-[#c99868] rounded-full" 
+                            style={{ width: `${item.level}%` }}
+                          ></div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
+
+                <div>
+                  <h3 className="text-sm font-bold text-[#e9e0ca] dark:text-[#3a4a38] uppercase mb-6 border-b border-[#bc8c5f]/40 dark:border-[#d4a373]/40 pb-2 tracking-wider">
+                    TECHNOLOGIES
+                  </h3>
+                  <div className="flex flex-wrap gap-3">
+                    {['React', 'Django', 'Node.js', 'Docker', 'AWS', 'Git', 'Python', 'JavaScript'].map((tech, i) => (
+                      <span 
+                        key={i} 
+                        className="px-3 py-2 bg-[#e9e0ca]/10 dark:bg-[#3a4a38]/10 border border-[#bc8c5f]/30 dark:border-[#d4a373]/30 text-[#e9e0ca] dark:text-[#3a4a38] rounded-lg text-sm font-medium hover:bg-[#bc8c5f]/20 dark:hover:bg-[#d4a373]/20 transition-all"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <a 
+                  href="/about" 
+                  className="mt-6 flex items-center justify-between bg-gradient-to-r from-[#bc8c5f] to-[#a17952] dark:from-[#d4a373] dark:to-[#c99868] p-4 rounded-lg transition-all group text-[#e9e0ca] dark:text-[#3a4a38] shadow-lg hover:shadow-xl hover:shadow-[#bc8c5f]/30 dark:hover:shadow-[#d4a373]/30"
+                >
+                  <span className="font-medium">More About Me</span>
+                  <ArrowRight size={18} className="transform group-hover:translate-x-2 transition-transform duration-300" />
+                </a>
               </div>
             </div>
           </div>
