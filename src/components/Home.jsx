@@ -1,4 +1,3 @@
-// Home.jsx - Tailwind Only, Redesigned
 import { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, FileText, Code, Download } from 'lucide-react';
 
@@ -9,37 +8,40 @@ const Home = () => {
     'DevOps Enthusiast',
     'Problem Solver'
   ]);
-  const [currentRole, setCurrentRole] = useState(roles[0]);
-  const [index, setIndex] = useState(0);
+  const [currentRole, setCurrentRole] = useState('');
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(100);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % roles.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [roles.length]);
+    const typeWriter = () => {
+      const currentText = roles[currentRoleIndex];
+      const shouldDelete = isDeleting;
 
-  useEffect(() => {
-    let charIndex = 0;
-    const typingEffect = setInterval(() => {
-      if (charIndex <= roles[index].length) {
-        setCurrentRole(roles[index].substring(0, charIndex));
-        charIndex++;
-      } else {
-        clearInterval(typingEffect);
+      setCurrentRole(prev => 
+        shouldDelete 
+          ? currentText.substring(0, prev.length - 1) 
+          : currentText.substring(0, prev.length + 1)
+      );
+
+      setTypingSpeed(isDeleting ? 50 : 100);
+
+      if (!isDeleting && currentRole === currentText) {
+        // Delay before starting to delete
+        setTimeout(() => setIsDeleting(true), 1500);
+      } else if (isDeleting && currentRole === '') {
+        setIsDeleting(false);
+        setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
       }
-    }, 100);
-    return () => clearInterval(typingEffect);
-  }, [index, roles]);
+    };
+
+    const timer = setTimeout(typeWriter, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [currentRole, currentRoleIndex, isDeleting, roles, typingSpeed]);
 
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center pt-24 pb-16 bg-white dark:bg-gray-900"
-    >
-      <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-blue-50/80 dark:from-gray-900/80 dark:to-gray-800/80 z-0" />
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="min-h-screen flex items-center pt-24 pb-12 bg-white dark:bg-gray-900">
+      <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           {/* Text Content */}
           <div className="md:w-1/2 text-center md:text-left">
@@ -68,13 +70,17 @@ const Home = () => {
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center md:justify-start mb-8">
-              <a href="#contact" className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">
+              <a href="/contact" className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">
                 <Mail size={18} /> Contact Me
               </a>
-              <a href="#projects" className="flex items-center gap-2 border border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 px-5 py-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900 transition">
+              <a href="/projects" className="flex items-center gap-2 border border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 px-5 py-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900 transition">
                 <Code size={18} /> View Projects
               </a>
-              <a href="/resume.pdf" className="flex items-center gap-2 bg-purple-600 text-white px-5 py-2 rounded-lg hover:bg-purple-700 transition">
+              <a 
+                href="/resume.pdf" 
+                download
+                className="flex items-center gap-2 bg-purple-600 text-white px-5 py-2 rounded-lg hover:bg-purple-700 transition"
+              >
                 <Download size={18} /> Resume
               </a>
             </div>
@@ -100,7 +106,7 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Profile Image Placeholder */}
+          {/* Profile Image */}
           <div className="md:w-1/2 flex justify-center">
             <div className="relative w-64 h-64 md:w-80 md:h-80">
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-30 blur-xl"></div>
