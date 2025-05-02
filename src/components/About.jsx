@@ -127,7 +127,7 @@ const About = () => {
   const Card = ({ children, className = '' }) => (
     <div className={`relative group transition-all duration-300 hover:transform hover:scale-[1.02] ${className}`}>
       <div className="absolute -inset-1 bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl blur-xl opacity-80 group-hover:opacity-100 transition-opacity"></div>
-      <div className="relative bg-white rounded-2xl shadow-xl p-8 border border-gray-200 h-full flex flex-col">
+      <div className="relative bg-white rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 border border-gray-200 h-full flex flex-col">
         {children}
       </div>
     </div>
@@ -136,43 +136,43 @@ const About = () => {
   const ListItem = ({ children }) => (
     <li className="flex items-start">
       <ChevronRight className="text-blue-600 mr-1 flex-shrink-0 mt-1" size={16} />
-      <span className="text-gray-700">{children}</span>
+      <span className="text-gray-700 text-sm sm:text-base">{children}</span>
     </li>
   );
 
   return (
-    <section id="about" className="py-24 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-semibold tracking-widest uppercase mb-6">
+    <section id="about" className="py-16 sm:py-20 md:py-24 bg-white mt-8">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-10 sm:mb-14 md:mb-16">
+          <span className="inline-block px-3 py-1 sm:px-4 sm:py-2 bg-blue-50 text-blue-600 rounded-full text-xs sm:text-sm font-semibold tracking-widest uppercase mb-4 sm:mb-6">
             ABOUT ME
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
             Who <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">I Am</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
             I'm an Information Technology student at Maharaja Agrasen Institute of Technology passionate about building scalable web applications and AI-powered solutions.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 max-w-6xl mx-auto">
           <Card>
-            <div className="mb-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-2xl font-bold text-gray-900">Education</h3>
-                <div className="p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full">
-                  <Code className="text-blue-600" size={20} />
+            <div className="mb-4 sm:mb-6">
+              <div className="flex items-center justify-between mb-3 sm:mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Education</h3>
+                <div className="p-2 sm:p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full">
+                  <Code className="text-blue-600" size={18} />
                 </div>
               </div>
-              <h4 className="text-xl font-semibold text-gray-900">B.Tech in Information Technology</h4>
-              <p className="text-gray-600">Maharaja Agrasen Institute Of Technology</p>
-              <p className="text-gray-500">Nov 2022 – Aug 2026</p>
-              <p className="mt-2 text-gray-800"><span className="font-medium">CGPA:</span> 9.195/10 (IPU Rank List)</p>
+              <h4 className="text-lg sm:text-xl font-semibold text-gray-900">B.Tech in Information Technology</h4>
+              <p className="text-gray-600 text-sm sm:text-base">Maharaja Agrasen Institute Of Technology</p>
+              <p className="text-gray-500 text-sm sm:text-base">Nov 2022 – Aug 2026</p>
+              <p className="mt-2 text-gray-800 text-sm sm:text-base"><span className="font-medium">CGPA:</span> 9.195/10 (IPU Rank List)</p>
             </div>
 
             <div>
-              <h4 className="font-semibold mb-3 text-blue-600">Relevant Coursework:</h4>
-              <ul className="space-y-2">
+              <h4 className="font-semibold mb-2 sm:mb-3 text-blue-600 text-sm sm:text-base">Relevant Coursework:</h4>
+              <ul className="space-y-1 sm:space-y-2">
                 {['Data Structures', 'Algorithms', 'Web Development', 'Machine Learning', 'Cloud Computing', 'Full Stack Development'].map((course, idx) => (
                   <ListItem key={idx}>{course}</ListItem>
                 ))}
@@ -181,16 +181,16 @@ const About = () => {
           </Card>
 
           <Card>
-            <div className="mb-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-2xl font-bold text-gray-900">Personal Info</h3>
-                <div className="p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full">
-                  <Code className="text-blue-600" size={20} />
+            <div className="mb-4 sm:mb-6">
+              <div className="flex items-center justify-between mb-3 sm:mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Personal Info</h3>
+                <div className="p-2 sm:p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full">
+                  <Code className="text-blue-600" size={18} />
                 </div>
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-2 sm:space-y-4">
               {[
                 { label: "Name:", value: "Tejas Gulati" },
                 { label: "Location:", value: "Delhi, India" },
@@ -214,18 +214,18 @@ const About = () => {
                 <div key={idx} className="flex items-start">
                   <ChevronRight className="text-blue-600 mr-1 flex-shrink-0 mt-1" size={16} />
                   <div>
-                    <span className="font-medium text-gray-700">{item.label}</span>
+                    <span className="font-medium text-gray-700 text-sm sm:text-base">{item.label}</span>
                     {item.link ? (
                       <a 
                         href={item.label === "Email:" ? `mailto:${item.value}` : `https://${item.value}`} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="ml-2 text-blue-600 hover:underline"
+                        className="ml-1 sm:ml-2 text-blue-600 hover:underline text-sm sm:text-base"
                       >
                         {item.value}
                       </a>
                     ) : (
-                      <span className="ml-2 text-gray-600">{item.value}</span>
+                      <span className="ml-1 sm:ml-2 text-gray-600 text-sm sm:text-base">{item.value}</span>
                     )}
                   </div>
                 </div>
@@ -235,22 +235,22 @@ const About = () => {
         </div>
         
         {/* Skills Section */}
-        <div className="mt-20">
-          <h3 className="text-3xl font-bold text-center mb-12 text-gray-900">
+        <div className="mt-12 sm:mt-16 md:mt-20">
+          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-10 md:mb-12 text-gray-900">
             Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">Skills</span>
           </h3>
           
           <div className="max-w-6xl mx-auto">
             {/* Skills Overview */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-              <Card className="col-span-1 lg:col-span-3 bg-gradient-to-br from-blue-50 to-white">
-                <div className="flex flex-col md:flex-row items-start md:items-center">
-                  <div className="p-4 bg-white rounded-xl shadow-md mr-6 mb-4 md:mb-0">
-                    <Code className="text-blue-600" size={32} />
+            <div className="grid grid-cols-1 gap-6 sm:gap-8 mb-8 sm:mb-10 md:mb-12">
+              <Card className="col-span-1 bg-gradient-to-br from-blue-50 to-white">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center">
+                  <div className="p-3 sm:p-4 bg-white rounded-xl shadow-md mr-0 sm:mr-6 mb-4 sm:mb-0">
+                    <Code className="text-blue-600" size={24} sm:size={32} />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-2">Full-Stack Developer & AI Enthusiast</h4>
-                    <p className="text-gray-700">
+                    <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Full-Stack Developer & AI Enthusiast</h4>
+                    <p className="text-gray-700 text-sm sm:text-base">
                       As a tech-focused student, I've developed expertise across multiple domains including web development,
                       cloud solutions, and machine learning. My technical toolkit enables me to build robust, scalable applications
                       from concept to deployment.
@@ -261,15 +261,15 @@ const About = () => {
             </div>
 
             {/* Detailed Skills Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {skills.map((skill, idx) => (
                 <div key={idx} className="relative group transition-all duration-300 hover:transform hover:scale-[1.02]">
                   <div className={`absolute -inset-1 bg-gradient-to-br ${skill.color} rounded-2xl blur-xl opacity-10 group-hover:opacity-30 transition-opacity`}></div>
-                  <div className="relative bg-white rounded-2xl shadow-md p-6 border border-gray-200 h-full flex flex-col">
-                    <div className="flex items-center justify-between mb-4">
-                      <h4 className="text-lg font-bold text-gray-900">{skill.category}</h4>
-                      <div className={`p-3 bg-gradient-to-br ${skill.color} bg-opacity-15 rounded-full`}>
-                        <skill.icon className="text-blue-600" size={20} />
+                  <div className="relative bg-white rounded-2xl shadow-md p-4 sm:p-6 border border-gray-200 h-full flex flex-col">
+                    <div className="flex items-center justify-between mb-3 sm:mb-4">
+                      <h4 className="text-base sm:text-lg font-bold text-gray-900">{skill.category}</h4>
+                      <div className={`p-2 sm:p-3 bg-gradient-to-br ${skill.color} bg-opacity-15 rounded-full`}>
+                        <skill.icon className="text-blue-600" size={16} sm:size={20} />
                       </div>
                     </div>
                     
@@ -277,7 +277,7 @@ const About = () => {
                       {skill.items.map((item, i) => (
                         <span 
                           key={i} 
-                          className="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-sm font-medium">
+                          className="px-2 py-1 sm:px-3 sm:py-1 rounded-full bg-blue-50 text-blue-700 text-xs sm:text-sm font-medium">
                           {item}
                         </span>
                       ))}
@@ -289,10 +289,10 @@ const About = () => {
           </div>
 
           {/* Skill Meter Section */}
-          <div className="max-w-5xl mx-auto mt-16">
-            <h4 className="text-xl font-bold text-center mb-8 text-gray-900">Proficiency Level</h4>
+          <div className="max-w-5xl mx-auto mt-10 sm:mt-12 md:mt-16">
+            <h4 className="text-lg sm:text-xl font-bold text-center mb-6 sm:mb-8 text-gray-900">Proficiency Level</h4>
             
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {[
                 { name: "Frontend Development", percentage: 90 },
                 { name: "Backend Development", percentage: 85 },
@@ -301,11 +301,11 @@ const About = () => {
                 { name: "DevOps", percentage: 70 }
               ].map((skill, idx) => (
                 <div key={idx} className="relative">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm font-medium text-gray-800">{skill.name}</span>
-                    <span className="text-sm font-medium text-gray-600">{skill.percentage}%</span>
+                  <div className="flex justify-between items-center mb-1 sm:mb-2">
+                    <span className="text-xs sm:text-sm font-medium text-gray-800">{skill.name}</span>
+                    <span className="text-xs sm:text-sm font-medium text-gray-600">{skill.percentage}%</span>
                   </div>
-                  <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                  <div className="h-1.5 sm:h-2 w-full bg-gray-200 rounded-full overflow-hidden">
                     <div 
                       className="h-full bg-gradient-to-r from-blue-400 to-blue-600 rounded-full"
                       style={{ width: `${skill.percentage}%` }}
@@ -318,56 +318,56 @@ const About = () => {
         </div>
 
         {/* Achievements Section */}
-        <div className="mt-20">
-          <h3 className="text-3xl font-bold text-center mb-12 text-gray-900">
+        <div className="mt-12 sm:mt-16 md:mt-20">
+          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-10 md:mb-12 text-gray-900">
             Awards & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">Achievements</span>
           </h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
             {achievements.map((achievement, idx) => (
               <Card key={idx}>
-                <div className="flex items-center justify-between mb-4">
-                  <h4 className="text-lg font-bold text-gray-900">{achievement.title}</h4>
-                  <div className="p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full">
-                    <achievement.icon className="text-blue-600" size={20} />
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
+                  <h4 className="text-base sm:text-lg font-bold text-gray-900">{achievement.title}</h4>
+                  <div className="p-2 sm:p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full">
+                    <achievement.icon className="text-blue-600" size={16} sm:size={20} />
                   </div>
                 </div>
-                <p className="text-gray-600">{achievement.description}</p>
-                <p className="text-sm text-gray-500 mt-2">{achievement.date}</p>
+                <p className="text-gray-600 text-sm sm:text-base">{achievement.description}</p>
+                <p className="text-xs sm:text-sm text-gray-500 mt-2">{achievement.date}</p>
               </Card>
             ))}
           </div>
         </div>
 
         {/* Certifications Section */}
-        <div className="mt-20">
-          <h3 className="text-3xl font-bold text-center mb-12 text-gray-900">
+        <div className="mt-12 sm:mt-16 md:mt-20">
+          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-10 md:mb-12 text-gray-900">
             Certifications & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">Courses</span>
           </h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
             {certificates.map((cert, idx) => (
               <Card key={idx} className="hover:shadow-lg transition-shadow">
                 <div className="flex flex-col h-full">
-                  <div className="flex items-center justify-between mb-4">
-                    <h4 className="text-xl font-bold text-gray-900">{cert.title}</h4>
-                    <div className="p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full">
-                      <Award className="text-blue-600" size={20} />
+                  <div className="flex items-center justify-between mb-3 sm:mb-4">
+                    <h4 className="text-lg sm:text-xl font-bold text-gray-900">{cert.title}</h4>
+                    <div className="p-2 sm:p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full">
+                      <Award className="text-blue-600" size={16} sm:size={20} />
                     </div>
                   </div>
                   
-                  <div className="mb-4 flex-grow">
-                    <div className="aspect-w-16 aspect-h-9 mb-4 bg-gray-100 rounded-lg overflow-hidden">
+                  <div className="mb-3 sm:mb-4 flex-grow">
+                    <div className="aspect-w-16 aspect-h-9 mb-3 sm:mb-4 bg-gray-100 rounded-lg overflow-hidden">
                       <img 
                         src={cert.image} 
                         alt={`${cert.title} certificate`} 
                         className="object-cover w-full h-full"
                       />
                     </div>
-                    <p className="text-gray-600 mb-1"><span className="font-medium">Issuer:</span> {cert.issuer}</p>
-                    {cert.instructor && <p className="text-gray-600 mb-1"><span className="font-medium">Instructor:</span> {cert.instructor}</p>}
-                    <p className="text-gray-600 mb-2"><span className="font-medium">Date:</span> {cert.date}</p>
-                    <p className="text-gray-700 text-sm">{cert.description}</p>
+                    <p className="text-gray-600 mb-1 text-xs sm:text-sm"><span className="font-medium">Issuer:</span> {cert.issuer}</p>
+                    {cert.instructor && <p className="text-gray-600 mb-1 text-xs sm:text-sm"><span className="font-medium">Instructor:</span> {cert.instructor}</p>}
+                    <p className="text-gray-600 mb-2 text-xs sm:text-sm"><span className="font-medium">Date:</span> {cert.date}</p>
+                    <p className="text-gray-700 text-xs sm:text-sm">{cert.description}</p>
                   </div>
                 </div>
               </Card>
@@ -376,14 +376,14 @@ const About = () => {
         </div>
 
         {/* Resume Download Button */}
-        <div className="text-center pt-16">
+        <div className="text-center pt-10 sm:pt-12 md:pt-16">
           <a 
             href="https://drive.google.com/file/d/10PH7sSPFUe3h-qgNhW-pMggGxmRvGRxb/view?usp=sharing" 
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white px-8 py-4 rounded-lg transition-all font-medium shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white px-5 py-3 sm:px-8 sm:py-4 rounded-lg transition-all font-medium text-sm sm:text-base shadow-lg hover:shadow-xl"
           >
-            <Download size={18} /> Download Resume
+            <Download size={16} sm:size={18} /> Download Resume
           </a>
         </div>
       </div>
