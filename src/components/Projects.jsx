@@ -356,9 +356,9 @@ const Projects = () => {
   );
 
   return (
-    <section id="projects" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white mt-12">
+    <section id="projects" className="py-16 sm:py-20 md:py-24 bg-white mt-8">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+        <div className="text-center mb-10 sm:mb-12 md:mb-16">
           <span className="inline-block px-3 py-1 sm:px-4 sm:py-2 bg-blue-50 text-blue-600 rounded-full text-xs sm:text-sm font-semibold tracking-widest uppercase mb-3 md:mb-4">
             MY WORK
           </span>
