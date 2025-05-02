@@ -1,10 +1,6 @@
-// Experience.jsx
-import { useState } from 'react';
-import { Briefcase, Calendar, ArrowRight, Award, Download, ChevronRight } from 'lucide-react';
+import { Briefcase, Calendar, ChevronRight, Download } from 'lucide-react';
 
 const Experience = () => {
-  const [activeTab, setActiveTab] = useState('experience');
-
   const experiences = [
     {
       id: 1,
@@ -22,55 +18,28 @@ const Experience = () => {
     }
   ];
 
-  const projects = [
-    {
-      id: 1,
-      title: "GrameenLink",
-      description: "Revolutionizing rural supply chains by connecting farmers directly to markets",
-      achievements: [
-        "Won 3rd place at Evolve-X competition at MAIT's Zenith E-Summit",
-        "Potential to increase farmer income by up to 45%",
-        "Featured in Unnat Bharat Abhiyan initiative"
-      ]
-    },
-    {
-      id: 2,
-      title: "MetaCorp",
-      description: "AI-powered business solution featured in Code Genesis competition",
-      achievements: [
-        "Top 15 out of 250 teams in Uncharted by CSI-IW",
-        "Finale presentation at Microsoft Office, Gurgaon"
-      ]
-    }
-  ];
-
-  const ExperienceItem = ({ item, icon: Icon }) => (
+  const ExperienceItem = ({ item }) => (
     <div className="relative group">
       <div className="absolute -inset-4 bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl blur-2xl opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
       <div className="relative p-8 bg-white rounded-2xl shadow-lg border border-gray-200 hover:border-blue-200 transition-all duration-300">
         <div className="flex flex-col md:flex-row md:items-start gap-6 mb-8">
           <div className="p-5 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full flex items-center justify-center group-hover:from-blue-200 group-hover:to-blue-100 transition-all duration-300">
-            <Icon className="text-blue-600" size={28} />
+            <Briefcase className="text-blue-600" size={28} />
           </div>
           <div className="flex-1">
-            <h3 className="text-2xl font-bold text-gray-900">{item.title || item.role}</h3>
-            {item.company && (
-              <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 mt-3">
-                <span className="flex items-center text-gray-600">
-                  <Calendar className="mr-2" size={16} />
-                  {item.duration}
-                </span>
-                <span className="font-medium text-blue-600">{item.company}</span>
-              </div>
-            )}
-            {item.description && (
-              <p className="text-gray-600 mt-3">{item.description}</p>
-            )}
+            <h3 className="text-2xl font-bold text-gray-900">{item.role}</h3>
+            <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 mt-3">
+              <span className="flex items-center text-gray-600">
+                <Calendar className="mr-2" size={16} />
+                {item.duration}
+              </span>
+              <span className="font-medium text-blue-600">{item.company}</span>
+            </div>
           </div>
         </div>
 
         <ul className="space-y-4 ml-2">
-          {(item.responsibilities || item.achievements).map((point, idx) => (
+          {item.responsibilities.map((point, idx) => (
             <li key={idx} className="flex items-start group/item">
               <div className="mr-4 mt-1 h-5 w-5 rounded-full bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center flex-shrink-0 group-hover/item:from-blue-200 group-hover/item:to-blue-100 transition-all duration-300">
                 <ChevronRight className="text-blue-600" size={14} />
@@ -98,55 +67,19 @@ const Experience = () => {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto mb-12">
-          <div className="flex justify-center space-x-4">
-            <button 
-              onClick={() => setActiveTab('experience')}
-              className={`px-6 py-3 rounded-lg font-medium transition-all ${
-                activeTab === 'experience' 
-                  ? 'bg-blue-600 text-white shadow-lg' 
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <Briefcase size={18} />
-                <span>Work Experience</span>
-              </div>
-            </button>
-            <button 
-              onClick={() => setActiveTab('projects')}
-              className={`px-6 py-3 rounded-lg font-medium transition-all ${
-                activeTab === 'projects' 
-                  ? 'bg-blue-600 text-white shadow-lg' 
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <Award size={18} />
-                <span>Notable Projects</span>
-              </div>
-            </button>
-          </div>
+        <div className="max-w-4xl mx-auto space-y-12">
+          {experiences.map(exp => <ExperienceItem key={exp.id} item={exp} />)}
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="space-y-12">
-            {activeTab === 'experience' 
-              ? experiences.map(exp => <ExperienceItem key={exp.id} item={exp} icon={Briefcase} />)
-              : projects.map(proj => <ExperienceItem key={proj.id} item={proj} icon={Award} />)
-            }
-          </div>
-          
-          <div className="text-center pt-16">
-            <a 
-              href="https://drive.google.com/file/d/10PH7sSPFUe3h-qgNhW-pMggGxmRvGRxb/view?usp=sharing" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white px-8 py-4 rounded-lg transition-all font-medium shadow-lg hover:shadow-xl"
-            >
-              <Download size={18} /> Download Resume
-            </a>
-          </div>
+        <div className="text-center pt-16">
+          <a 
+            href="https://drive.google.com/file/d/10PH7sSPFUe3h-qgNhW-pMggGxmRvGRxb/view?usp=sharing" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white px-8 py-4 rounded-lg transition-all font-medium shadow-lg hover:shadow-xl"
+          >
+            <Download size={18} /> Download Resume
+          </a>
         </div>
       </div>
     </section>

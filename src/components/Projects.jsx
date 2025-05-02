@@ -1,58 +1,220 @@
-// Projects.jsx
 import { useState } from 'react';
-import { Github, ExternalLink, Code, Award, Trophy, ChevronRight } from 'lucide-react';
+import { Github, ExternalLink, Code, Award, Trophy, ChevronRight, X, Image as ImageIcon } from 'lucide-react';
+
+// Importing all images
+import news1 from '../assets/news1.png';
+import news2 from '../assets/news2.png';
+import news3 from '../assets/news3.png';
+import news4 from '../assets/news4.png';
+import ecop1 from '../assets/ecop1.png';
+import ecop2 from '../assets/ecop2.png';
+import ecop3 from '../assets/ecop3.png';
+import ecop4 from '../assets/ecop4.png';
+import gmlink1 from '../assets/gmlink1.png';
+import gmlink2 from '../assets/gmlink2.png';
+import gmlink3 from '../assets/gmlink3.png';
+import gmlink4 from '../assets/gmlink4.png';
+import mcorp1 from '../assets/mcorp1.png';
+import mcorp2 from '../assets/mcorp2.png';
+import mcorp3 from '../assets/mcorp3.png';
+import mcorp4 from '../assets/mcorp4.png';
 
 const Projects = () => {
   const [activeProject, setActiveProject] = useState(1);
+  const [showModal, setShowModal] = useState(false);
+  const [currentProject, setCurrentProject] = useState(null);
+  const [showImageModal, setShowImageModal] = useState(false);
+  const [currentImage, setCurrentImage] = useState(null);
 
   const projects = [
     {
       id: 1,
       title: "NewsSphere",
       description: "A dynamic news aggregation platform that allows users to access the latest articles, save bookmarks, and monitor their news consumption via a personalized dashboard.",
+      longDescription: "NewsSphere revolutionizes how users consume news by automatically aggregating content from multiple sources, providing personalized recommendations, and giving users insights into their reading habits. The system utilizes scheduled web scraping with Redis and Celery to ensure real-time updates without overloading the system or source websites.",
       features: [
-        "Integrated Django backend with React frontend",
+        "Integrated Django REST Framework backend with Angular frontend",
         "Utilized Redis and Celery for scheduled web scraping",
         "Real-time news updates without system overload",
         "JWT authentication for secure user access",
-        "Personalized dashboard for tracking reading habits"
+        "Personalized dashboard for tracking reading habits",
+        "MySQL database for structured data storage"
       ],
-      technologies: ["Django", "React", "JWT", "Redis", "Celery", "MySQL", "Docker"],
+      technologies: ["Django", "Angular", "JWT", "Redis", "Celery", "MySQL", "Docker"],
       githubLink: "https://github.com/TejasGulati/NewsSphere",
-      demoLink: "#"
+      demoLink: "#",
+      inProgress: true,
+      screenshots: [
+        { id: 'ns1', alt: "NewsSphere Dashboard", src: news1, caption: "Personalized News Dashboard" },
+        { id: 'ns2', alt: "Article View", src: news2, caption: "Article Reading Interface" },
+        { id: 'ns3', alt: "Bookmarked", src: news3, caption: "Bookmark Articles" },
+        { id: 'ns4', alt: "Trending and Recommendation", src: news4, caption: "Personal Touch" }
+      ]
     },
     {
       id: 2,
       title: "EcoPulse",
       description: "AI-powered business solutions for sustainability, with features like predictive maintenance and AI-driven resource management.",
+      longDescription: "EcoPulse integrates AI for sustainability, enhancing strategic decision-making in environmental management practices. The platform addresses the misalignment between AI initiatives and sustainability principles, providing quantifiable environmental impact data and actionable insights especially valuable for resource-limited startups.",
       features: [
-        "Integrated generative AI models",
-        "Focus on creating eco-friendly business models",
-        "Aligned with ESG (Environmental, Social, Governance) objectives",
-        "Predictive analytics for resource optimization",
-        "Dashboard for tracking sustainability metrics"
+        "Predictive ESG (Environmental, Social, Governance) Analytics",
+        "Generative AI models for sustainability optimization",
+        "Real-time data visualization of environmental impact metrics",
+        "Integration with existing business systems",
+        "Customizable sustainability dashboards",
+        "AI-driven recommendations for resource optimization"
       ],
-      technologies: ["Django", "React", "Docker", "TensorFlow", "Generative AI"],
+      technologies: ["Django", "React", "Docker", "TensorFlow", "PyTorch", "PostgreSQL", "Gemini AI"],
       githubLink: "https://github.com/TejasGulati/EcoPulse",
-      demoLink: "#"
+      demoLink: "#",
+      inProgress: true,
+      screenshots: [
+        { id: 'ep1', alt: "EcoPulse Dashboard", src: ecop1, caption: "Sustainability Overview Dashboard" },
+        { id: 'ep2', alt: "Environmental Impact Analysis", src: ecop2, caption: "Environmental Impact Analysis" },
+        { id: 'ep3', alt: "Generate Sustainiblity Reports", src: ecop3, caption: "Generate Sustainiblity Reports" },
+        { id: 'ep4', alt: "AI Powered Predictive Analysis", src: ecop4, caption: "AI Powered Predictive Analysis" }
+      ]
     },
     {
       id: 3,
       title: "GrameenLink",
       description: "Revolutionizing rural supply chains by connecting farmers directly to markets, eliminating middlemen, and increasing farmer income by up to 45%.",
+      longDescription: "GrameenLink is an innovative rural distribution platform designed to transform last-mile delivery in rural India using technology. The platform leverages AI-driven micro-warehouses, drone delivery systems, blockchain transparency, and mobile retail vans to empower rural economies with efficient and transparent supply chains.",
       features: [
         "Won 3rd place at Evolve-X competition at MAIT's Zenith E-Summit",
         "Featured in Unnat Bharat Abhiyan initiative",
-        "Collaborative buying model for rural communities",
-        "Digital platform for direct farmer-to-market connections",
-        "Real-time pricing and inventory management"
+        "Blockchain-powered supply chain transparency",
+        "Drone-based delivery system for remote areas",
+        "Inventory optimization for rural distribution",
+        "Mobile retail vans for last-mile access",
+        "Village kiosks for community-based commerce"
       ],
-      technologies: ["Django", "React", "PostgreSQL", "Payment Gateway Integration"],
+      technologies: ["React (Vite)", "Tailwind CSS", "Blockchain", "IoT Integration"],
       githubLink: "#",
       demoLink: "https://grameen-link.vercel.app/",
-      award: true
+      award: true,
+      inProgress: false,
+      screenshots: [
+        { id: 'gl1', alt: "GrameenLink Platform", src: gmlink1, caption: "Main Platform Interface" },
+        { id: 'gl2', alt: "Blockchain Transparency", src: gmlink2, caption: "Blockchain-Powered Supply Chain" },
+        { id: 'gl3', alt: "Mobile Retail Solutions", src: gmlink3, caption: "Mobile Retail Van Tracking" },
+        { id: 'gl4', alt: "Rural Distribution Drone Network", src: gmlink4, caption: "Drone Network" }
+      ]
+    },
+    {
+      id: 4,
+      title: "MetaCorp",
+      description: "An AI-powered business simulator designed to model parallel business realities, helping companies predict the long-term effects of strategic decisions.",
+      longDescription: "MetaCorp is a cutting-edge business simulator that creates a 'business multiverse' to predict how different strategic decisions can shape a company's future. Using advanced AI models, it helps businesses foresee potential risks, identify hidden opportunities, and optimize growth strategies by simulating parallel realities rather than relying on static data analysis.",
+      features: [
+        "Multiverse Simulation Engine for parallel business scenarios",
+        "AI-Powered Predictive Modeling with Gemini AI integration",
+        "Dynamic Risk Detection using anomaly detection algorithms",
+        "Interactive Visualizations with scenario maps and impact heatmaps",
+        "Django backend with React frontend",
+        "PostgreSQL for structured financial data"
+      ],
+      technologies: ["React", "Django", "Gemini AI", "TensorFlow", "PostgreSQL", "D3.js", "Tailwind CSS"],
+      githubLink: "https://github.com/TejasGulati/MetaCorp_production",
+      demoLink: "#",
+      inProgress: true,
+      screenshots: [
+        { id: 'mc1', alt: "Business Multiverse Diagram", src: mcorp1, caption: "Business Multiverse Diagram" },
+        { id: 'mc2', alt: "Market Value Trajectories", src: mcorp2, caption: "Market Value Trajectories" },
+        { id: 'mc3', alt: "Revenue Growth Trajectories", src: mcorp3, caption: "Revenue Growth Trajectories" },
+        { id: 'mc4', alt: "Correlation Of Final Year Metrics", src: mcorp4, caption: "Correlation Of Final Year Metrics" }
+      ]
     }
   ];
+
+  const handleDemoClick = (e, project) => {
+    e.stopPropagation();
+    if (project.inProgress) {
+      setCurrentProject(project);
+      setShowModal(true);
+    } else {
+      window.open(project.demoLink, "_blank");
+    }
+  };
+
+  const handleScreenshotClick = (e, image, project) => {
+    e.stopPropagation();
+    setCurrentImage({ ...image, projectTitle: project.title });
+    setShowImageModal(true);
+  };
+
+  const WIPModal = () => {
+    if (!showModal) return null;
+    
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full">
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-2xl font-bold text-gray-900">{currentProject?.title}</h3>
+            <button 
+              onClick={() => setShowModal(false)}
+              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            >
+              <X size={24} className="text-gray-500" />
+            </button>
+          </div>
+          
+          <div className="bg-blue-50 rounded-xl p-8 text-center mb-6">
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Code className="text-blue-600" size={28} />
+            </div>
+            <h4 className="text-xl font-bold text-gray-900 mb-3">Coming Soon!</h4>
+            <p className="text-gray-600">
+              I'm actively working on this exciting project and will update the live demo soon. Thank you for your interest!
+            </p>
+          </div>
+          
+          <div className="flex justify-center">
+            <button
+              onClick={() => setShowModal(false)}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-all font-medium shadow-md"
+            >
+              Looking Forward To It
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const ImageViewerModal = () => {
+    if (!showImageModal || !currentImage) return null;
+    
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
+        <div className="relative w-full h-full max-w-6xl max-h-[90vh] flex flex-col">
+          <div className="flex justify-between items-center mb-4 bg-gray-900 p-4 rounded-t-xl">
+            <h3 className="text-2xl font-bold text-white">
+              {currentImage.projectTitle} - <span className="text-blue-400">{currentImage.caption}</span>
+            </h3>
+            <button 
+              onClick={() => setShowImageModal(false)}
+              className="p-2 hover:bg-gray-700 rounded-full transition-colors text-white"
+            >
+              <X size={24} />
+            </button>
+          </div>
+          
+          <div className="flex-1 overflow-auto bg-gray-800 flex items-center justify-center p-4">
+            <img 
+              src={currentImage.src} 
+              alt={currentImage.alt} 
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl border border-gray-700"
+            />
+          </div>
+          
+          <div className="bg-gray-900 p-4 text-center text-gray-300 rounded-b-xl">
+            {currentImage.caption}
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   const ProjectCard = ({ project }) => (
     <div 
@@ -69,12 +231,12 @@ const Projects = () => {
           </div>
           <div className="flex-1">
             <h3 className="text-2xl font-bold text-gray-900">{project.title}</h3>
-            <p className="text-gray-600 mt-3">{project.description}</p>
+            <p className="text-gray-600 mt-3">{project.longDescription}</p>
           </div>
         </div>
 
         <div className="mb-6">
-          <h4 className="font-semibold mb-3 text-blue-600">Key Features:</h4>
+          <h4 className="font-semibold mb-3 text-blue-600 text-lg">Key Features:</h4>
           <ul className="space-y-4 ml-2">
             {project.features.map((feature, idx) => (
               <li key={idx} className="flex items-start">
@@ -88,7 +250,7 @@ const Projects = () => {
         </div>
 
         <div className="mb-8">
-          <h4 className="font-semibold mb-3 text-blue-600">Technologies:</h4>
+          <h4 className="font-semibold mb-3 text-blue-600 text-lg">Technologies:</h4>
           <div className="flex flex-wrap gap-2">
             {project.technologies.map((tech, idx) => (
               <span 
@@ -97,6 +259,36 @@ const Projects = () => {
               >
                 {tech}
               </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-8">
+          <h4 className="font-semibold mb-6 text-blue-600 text-xl">Project Screenshots:</h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {project.screenshots.map((image) => (
+              <div 
+                key={image.id}
+                className="overflow-hidden rounded-xl border-2 border-gray-200 hover:border-blue-400 transition-all cursor-pointer group relative"
+                onClick={(e) => handleScreenshotClick(e, image, project)}
+              >
+                <div className="aspect-video bg-gray-100 relative">
+                  <img 
+                    src={image.src} 
+                    alt={image.alt} 
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center transition-all">
+                    <div className="bg-white p-3 rounded-full opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300 shadow-lg">
+                      <ImageIcon size={24} className="text-blue-600" />
+                      <span className="sr-only">View larger</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-3 bg-gray-50 border-t-2 border-gray-200 text-sm font-medium text-gray-700 text-center">
+                  {image.caption}
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -115,16 +307,13 @@ const Projects = () => {
             </a>
           )}
           {project.demoLink && (
-            <a
-              href={project.demoLink}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={(e) => handleDemoClick(e, project)}
               className="flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-700 px-5 py-2 rounded-lg transition-all font-medium shadow-md border border-gray-200"
-              onClick={(e) => e.stopPropagation()}
             >
               <ExternalLink size={18} />
               Live Demo
-            </a>
+            </button>
           )}
           {project.award && (
             <span className="flex items-center gap-2 bg-blue-50 text-gray-700 px-5 py-2 rounded-lg font-medium border border-blue-200">
@@ -148,12 +337,12 @@ const Projects = () => {
             Featured <span className="text-blue-600">Projects</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Notable projects that showcase my skills in full-stack development, DevOps, and AI integration.
+            Notable projects that showcase my skills in full-stack development, DevOps, AI integration, and sustainable technological solutions.
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="space-y-12">
+        <div className="max-w-6xl mx-auto">
+          <div className="space-y-20">
             {projects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
@@ -171,6 +360,8 @@ const Projects = () => {
           </a>
         </div>
       </div>
+      <WIPModal />
+      <ImageViewerModal />
     </section>
   );
 };
