@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
@@ -19,12 +19,12 @@ const ScrollToTop = () => {
   return null;
 };
 
-const AppContent = ({ darkMode, toggleDarkMode }) => {
+const AppContent = () => {
   return (
     <>
       <ScrollToTop />
-      <div className={`min-h-screen flex flex-col ${darkMode ? 'dark' : ''}`}>
-        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -41,26 +41,9 @@ const AppContent = ({ darkMode, toggleDarkMode }) => {
 };
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(() => {
-    const savedMode = localStorage.getItem('darkMode');
-    if (savedMode !== null) return JSON.parse(savedMode);
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem('darkMode', JSON.stringify(darkMode));
-  }, [darkMode]);
-
-  const toggleDarkMode = () => setDarkMode(!darkMode);
-
   return (
     <Router>
-      <AppContent darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <AppContent />
     </Router>
   );
 };
