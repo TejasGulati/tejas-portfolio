@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 import {
   Mail, Send, Phone, MapPin, Github, Linkedin, FileText,
 } from 'lucide-react';
@@ -12,12 +13,25 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [submitError, setSubmitError] = useState('');
   const [errors, setErrors] = useState({});
+
+  // Initialize Email.js service
+  useEffect(() => {
+    // Initialize EmailJS with your public key (from the EmailJS dashboard)
+    emailjs.init("zw76Z2tCCrnGC7sm2"); // Your public key
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     setErrors((prev) => ({ ...prev, [name]: '' }));
+    
+    // Clear any previous submission messages
+    if (submitMessage || submitError) {
+      setSubmitMessage('');
+      setSubmitError('');
+    }
   };
 
   const validateForm = () => {
@@ -25,22 +39,53 @@ const Contact = () => {
     Object.entries(formData).forEach(([key, value]) => {
       if (!value.trim()) newErrors[key] = `${key[0].toUpperCase() + key.slice(1)} is required`;
     });
+    
+    // Validate email format
+    if (formData.email && !/^\S+@\S+\.\S+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitMessage('Thanks! I will get back to you soon.');
+    
+    try {
+      // Create a form reference - EmailJS needs a form element or form data
+      const form = e.target;
+      
+      // Send email using Email.js with form element
+      const response = await emailjs.sendForm(
+        'service_s67ji06', // Your service ID
+        'template_bgm9l7p', // Your template ID
+        form,
+        'zw76Z2tCCrnGC7sm2' // Your public key (should match the one used in init)
+      );
+
+      // Handle successful submission
+      setSubmitMessage('Thanks! Your message has been sent successfully.');
       setFormData({ name: '', email: '', subject: '', message: '' });
+      
+      // Log the successful response
+      console.log('Email sent successfully:', response);
+      
+      // Clear success message after some time
       setTimeout(() => setSubmitMessage(''), 5000);
-    }, 1500);
+    } catch (error) {
+      // Handle error
+      console.error('Failed to send email:', error);
+      setSubmitError('Failed to send your message. Please try again later.');
+      
+      // Clear error message after some time
+      setTimeout(() => setSubmitError(''), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const ContactInfoItem = ({ icon: Icon, label, value, href }) => (
@@ -103,7 +148,7 @@ const Contact = () => {
 
                     {/* Contact Info */}
                     <div className="space-y-4 md:space-y-6 mb-8 md:mb-10">
-                      <ContactInfoItem icon={Mail} label="Email" value="tejasgulati11227@gmail.com" href="mailto:tejasgulati11227@gmail.com" />
+                      <ContactInfoItem icon={Mail} label="Email" value="tejasgulati101@gmail.com" href="mailto:tejasgulati101@gmail.com" />
                       <ContactInfoItem icon={Phone} label="Phone" value="+91-9868629191" />
                       <ContactInfoItem icon={MapPin} label="Location" value="Delhi, India" />
                     </div>
@@ -118,7 +163,7 @@ const Contact = () => {
                       {[
                         { href: "https://github.com/TejasGulati", icon: Github },
                         { href: "https://linkedin.com/in/tejas-gulati/", icon: Linkedin },
-                        { href: "mailto:tejasgulati11227@gmail.com", icon: Mail },
+                        { href: "mailto:tejasgulati101@gmail.com", icon: Mail },
                         { href: "https://drive.google.com/file/d/10PH7sSPFUe3h-qgNhW-pMggGxmRvGRxb/view?usp=sharing", icon: FileText }
                       ].map((item, i) => (
                         <a
@@ -141,6 +186,9 @@ const Contact = () => {
             <div className="lg:col-span-3">
               <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
                 <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-4">Send Me a Message</h3>
+
+                {/* Hidden field for to_email */}
+                <input type="hidden" name="to_email" value="tejasgulati101@gmail.com" />
 
                 {/* Form Fields */}
                 {['name', 'email', 'subject'].map((field) => (
@@ -183,9 +231,12 @@ const Contact = () => {
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
 
-                {/* Success Message */}
+                {/* Success/Error Message */}
                 {submitMessage && (
                   <p className="text-sm text-center text-green-600 mt-2">{submitMessage}</p>
+                )}
+                {submitError && (
+                  <p className="text-sm text-center text-red-600 mt-2">{submitError}</p>
                 )}
               </form>
             </div>

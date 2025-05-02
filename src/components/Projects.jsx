@@ -145,7 +145,7 @@ const Projects = () => {
 
   const WIPModal = () => {
     if (!showModal) return null;
-    
+
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
         <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 max-w-md w-full">
@@ -184,7 +184,7 @@ const Projects = () => {
 
   const ImageViewerModal = () => {
     if (!showImageModal || !currentImage) return null;
-    
+
     return (
       <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
         <div className="relative w-full h-full max-w-6xl max-h-[90vh] flex flex-col">
@@ -217,17 +217,19 @@ const Projects = () => {
   };
 
   const ProjectCard = ({ project }) => (
-    <div 
-      className="relative cursor-pointer"
+    <div
+      className="relative cursor-pointer group"
       onClick={() => setActiveProject(project.id)}
     >
-      <div className="relative p-4 sm:p-6 md:p-8 bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 hover:border-blue-200 transition-all duration-300">
+      <div className="absolute -inset-4 bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl blur-2xl opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div className="relative p-4 sm:p-6 md:p-8 bg-white rounded-2xl shadow-lg border border-gray-200 hover:border-blue-200 transition-all duration-300">
         <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-6 mb-6 md:mb-8">
-          <div className="p-3 sm:p-4 md:p-5 bg-blue-50 rounded-full flex items-center justify-center self-start">
-            {project.award ? 
-              <Trophy className="text-blue-600" size={20} sm:size={24} md:size={28} /> : 
-              <Code className="text-blue-600" size={20} sm:size={24} md:size={28} />
-            }
+          <div className="p-3 sm:p-4 md:p-5 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full flex items-center justify-center flex-shrink-0 group-hover:from-blue-200 group-hover:to-blue-100 transition-all duration-300">
+            {project.award ? (
+              <Trophy className="text-blue-600" size={24} />
+            ) : (
+              <Code className="text-blue-600" size={24} />
+            )}
           </div>
           <div className="flex-1">
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{project.title}</h3>
@@ -237,13 +239,13 @@ const Projects = () => {
 
         <div className="mb-4 sm:mb-6">
           <h4 className="font-semibold mb-2 md:mb-3 text-blue-600 text-base sm:text-lg">Key Features:</h4>
-          <ul className="space-y-2 sm:space-y-3 md:space-y-4 ml-2">
+          <ul className="space-y-3 md:space-y-4 ml-1 sm:ml-2">
             {project.features.map((feature, idx) => (
-              <li key={idx} className="flex items-start">
-                <div className="mr-3 md:mr-4 mt-1 h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
-                  <ChevronRight className="text-blue-600" size={12} sm:size={14} />
+              <li key={idx} className="flex items-start group/item">
+                <div className="mr-3 md:mr-4 mt-1 h-4 w-4 md:h-5 md:w-5 rounded-full bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center flex-shrink-0 group-hover/item:from-blue-200 group-hover/item:to-blue-100 transition-all duration-300">
+                  <ChevronRight className="text-blue-600" size={12} />
                 </div>
-                <span className="text-sm sm:text-base text-gray-700">{feature}</span>
+                <span className="text-sm md:text-base text-gray-700">{feature}</span>
               </li>
             ))}
           </ul>
@@ -280,7 +282,7 @@ const Projects = () => {
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center transition-all">
                     <div className="bg-white p-2 sm:p-3 rounded-full opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300 shadow-lg">
-                      <ImageIcon size={16} sm:size={20} md:size={24} className="text-blue-600" />
+                      <ImageIcon size={16} className="text-blue-600" />
                       <span className="sr-only">View larger</span>
                     </div>
                   </div>
@@ -327,36 +329,34 @@ const Projects = () => {
   );
 
   return (
-    <section id="projects" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white mt-12">
+    <section id="projects" className="py-16 sm:py-20 md:py-24 bg-white mt-8">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="text-center mb-8 sm:mb-12 md:mb-16">
-          <span className="inline-block px-3 py-1 sm:px-4 sm:py-2 bg-blue-50 text-blue-600 rounded-full text-xs sm:text-sm font-semibold tracking-widest uppercase mb-3 md:mb-4">
+        <div className="text-center mb-10 sm:mb-12 md:mb-16">
+          <span className="inline-block px-3 py-1 sm:px-4 sm:py-2 bg-blue-50 text-blue-600 rounded-full text-xs sm:text-sm font-semibold tracking-widest uppercase mb-3 sm:mb-4">
             MY WORK
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 mb-4 sm:mb-6 md:mb-8">
-            Featured <span className="text-blue-600">Projects</span>
+            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">Projects</span>
           </h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
             Notable projects that showcase my skills in full-stack development, DevOps, AI integration, and sustainable technological solutions.
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto">
-          <div className="space-y-12 sm:space-y-16 md:space-y-20">
-            {projects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
+        <div className="max-w-6xl mx-auto space-y-8 sm:space-y-10 md:space-y-12">
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
         </div>
         
-        <div className="text-center mt-8 sm:mt-12 md:mt-16">
+        <div className="text-center pt-10 sm:pt-12 md:pt-16">
           <a
             href="https://github.com/TejasGulati"
             target="_blank"
             rel="noopener noreferrer" 
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg transition-all font-medium shadow-lg text-sm sm:text-base"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg transition-all font-medium shadow-lg hover:shadow-xl text-sm sm:text-base"
           >
-            <Github size={16} sm:size={18} /> View More on GitHub
+            <Github size={16} /> View More on GitHub
           </a>
         </div>
       </div>

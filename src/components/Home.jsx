@@ -7,6 +7,7 @@ import fieldVisit1 from '../assets/grameenlink1.jpg';
 import fieldVisit2 from '../assets/grameenlink2.jpg';
 import fieldVisit3 from '../assets/grameenlink3.jpg';
 import societyCert from '../assets/society_cert.png';
+import passportPhoto from '../assets/Passport Photo.png';
 
 const Home = () => {
   const [roles] = useState([
@@ -128,7 +129,16 @@ const Home = () => {
             {/* Right Content */}
             <div className="relative mt-8 lg:mt-0">
               <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl blur-3xl opacity-80"></div>
-              <div className="relative bg-white rounded-2xl md:rounded-3xl shadow-xl p-4 md:p-8 border border-gray-200">
+              <div className="relative bg-white rounded-2xl md:rounded-3xl shadow-xl p-4 md:p-8 border border-gray-200 overflow-hidden">
+                {/* Profile Image */}
+                <div className="absolute -top-6 -right-6 w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-lg z-10">
+                  <img 
+                    src={passportPhoto} 
+                    alt="Tejas Gulati" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                
                 <div className="flex items-center gap-3 md:gap-4 mb-6 md:mb-8">
                   <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center text-white font-bold text-xl md:text-2xl shadow-md">
                     TG
