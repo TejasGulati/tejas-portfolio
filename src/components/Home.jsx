@@ -12,11 +12,11 @@ import passportPhoto from '../assets/Passport Photo.png';
 const Home = () => {
   const [roles] = useState([
     'Full Stack Developer',
-    'Web Developer',
     'DevOps Engineer',
     'AI Solutions Developer',
     'Startup Founder',
-    'Society President'
+    'Society President',
+    'Sports Enthusiast'
   ]);
   const [currentRole, setCurrentRole] = useState('');
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);

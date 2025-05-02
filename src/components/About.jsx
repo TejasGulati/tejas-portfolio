@@ -7,6 +7,7 @@ import evolveCert from '../assets/evovle_cert.png';
 import buildWarCert from '../assets/build_war.png';
 import tvaCert from '../assets/tva_Cert.png';
 import financeCert from '../assets/finance_cert.png';
+import volleyCert from '../assets/volley_cert.jpeg';
 
 const About = () => {
   const [activeTab] = useState('education');
@@ -52,6 +53,12 @@ const About = () => {
 
   const achievements = [
     { 
+      title: "1st Position in Volleyball", 
+      description: "Secured 1st position in volleyball at UNPLUGGED 2K25 organized by CSE-AIML department at MAIT", 
+      icon: Trophy,
+      date: "2025"
+    },
+    { 
       title: "3rd Place at Evolve-X Competition", 
       description: "Won 3rd place for GrameenLink, a rural supply chain innovation at MAIT's Zenith E-Summit", 
       icon: Trophy,
@@ -62,16 +69,17 @@ const About = () => {
       description: "Selected among top 15 teams out of 250 in Uncharted by CSI-IW for MetaCorp project", 
       icon: Award,
       date: "2025"
-    },
-    { 
-      title: "Build Wars Participant", 
-      description: "Competed in high-stakes competition at E-Summit against 100+ teams", 
-      icon: Trophy,
-      date: "2025"
     }
   ];
 
   const certificates = [
+    {
+      title: "1st Position in Volleyball",
+      issuer: "CSE-AIML Department, MAIT",
+      date: "2025",
+      description: "Awarded for securing 1st position in volleyball at UNPLUGGED 2K25 event.",
+      image: volleyCert
+    },
     {
       title: "The Complete Full-Stack Web Development Bootcamp",
       issuer: "Udemy",
@@ -246,7 +254,7 @@ const About = () => {
               <Card className="col-span-1 bg-gradient-to-br from-blue-50 to-white">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center">
                   <div className="p-3 sm:p-4 bg-white rounded-xl shadow-md mr-0 sm:mr-6 mb-4 sm:mb-0">
-                    <Code className="text-blue-600" size={24} sm:size={32} />
+                    <Code className="text-blue-600" size={24} />
                   </div>
                   <div>
                     <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Full-Stack Developer & AI Enthusiast</h4>
@@ -269,7 +277,7 @@ const About = () => {
                     <div className="flex items-center justify-between mb-3 sm:mb-4">
                       <h4 className="text-base sm:text-lg font-bold text-gray-900">{skill.category}</h4>
                       <div className={`p-2 sm:p-3 bg-gradient-to-br ${skill.color} bg-opacity-15 rounded-full`}>
-                        <skill.icon className="text-blue-600" size={16} sm:size={20} />
+                        <skill.icon className="text-blue-600" size={16} />
                       </div>
                     </div>
                     
@@ -329,7 +337,7 @@ const About = () => {
                 <div className="flex items-center justify-between mb-3 sm:mb-4">
                   <h4 className="text-base sm:text-lg font-bold text-gray-900">{achievement.title}</h4>
                   <div className="p-2 sm:p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full">
-                    <achievement.icon className="text-blue-600" size={16} sm:size={20} />
+                    <achievement.icon className="text-blue-600" size={16} />
                   </div>
                 </div>
                 <p className="text-gray-600 text-sm sm:text-base">{achievement.description}</p>
@@ -352,7 +360,7 @@ const About = () => {
                   <div className="flex items-center justify-between mb-3 sm:mb-4">
                     <h4 className="text-lg sm:text-xl font-bold text-gray-900">{cert.title}</h4>
                     <div className="p-2 sm:p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full">
-                      <Award className="text-blue-600" size={16} sm:size={20} />
+                      <Award className="text-blue-600" size={16} />
                     </div>
                   </div>
                   
@@ -383,7 +391,7 @@ const About = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white px-5 py-3 sm:px-8 sm:py-4 rounded-lg transition-all font-medium text-sm sm:text-base shadow-lg hover:shadow-xl"
           >
-            <Download size={16} sm:size={18} /> Download Resume
+            <Download size={16} /> Download Resume
           </a>
         </div>
       </div>
