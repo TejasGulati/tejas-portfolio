@@ -17,7 +17,7 @@ const Navbar = () => {
   const socialLinks = [
     { href: 'https://github.com/TejasGulati', icon: <Github size={18} />, label: 'GitHub' },
     { href: 'https://linkedin.com/in/tejas-gulati/', icon: <Linkedin size={18} />, label: 'LinkedIn' },
-    { href: 'mailto:tejasgulati11227@gmail.com', icon: <Mail size={18} />, label: 'Email' }
+    { href: 'mailto:tejasgulati101@gmail.com', icon: <Mail size={18} />, label: 'Email' }
   ];
 
   return (

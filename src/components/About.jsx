@@ -196,7 +196,7 @@ const About = () => {
                 { label: "Location:", value: "Delhi, India" },
                 { 
                   label: "Email:", 
-                  value: "tejasgulati11227@gmail.com",
+                  value: "tejasgulati101@gmail.com",
                   link: true 
                 },
                 { label: "Phone:", value: "+91-9868629191" },
